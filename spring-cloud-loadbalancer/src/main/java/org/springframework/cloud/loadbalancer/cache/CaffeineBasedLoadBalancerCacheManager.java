@@ -19,7 +19,7 @@ package org.springframework.cloud.loadbalancer.cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 
 import org.springframework.cache.caffeine.CaffeineCacheManager;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import static org.springframework.cloud.loadbalancer.core.CachingServiceInstanceListSupplier.SERVICE_INSTANCE_CACHE_NAME;
 
@@ -37,7 +37,7 @@ public class CaffeineBasedLoadBalancerCacheManager extends CaffeineCacheManager 
 
 	public CaffeineBasedLoadBalancerCacheManager(String cacheName, LoadBalancerCacheProperties properties) {
 		super(cacheName);
-		if (!StringUtils.isEmpty(properties.getCaffeine().getSpec())) {
+		if (!ObjectUtils.isEmpty(properties.getCaffeine().getSpec())) {
 			setCacheSpecification(properties.getCaffeine().getSpec());
 		}
 		else {
